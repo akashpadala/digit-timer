@@ -29,10 +29,13 @@ class DigitalTimer extends Component {
   }
 
   onStartTimer = () => {
-    this.setState(prevState => ({
-      isTimerStarted: !prevState.isTimerStarted,
-    }))
-    this.timerId = setInterval(this.timer, 1000)
+    const {timerMinutes} = this.state
+    if (timerMinutes > 0) {
+      this.setState(prevState => ({
+        isTimerStarted: !prevState.isTimerStarted,
+      }))
+      this.timerId = setInterval(this.timer, 1000)
+    }
   }
 
   onPauseTimer = () => {
